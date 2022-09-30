@@ -14,7 +14,6 @@ interface ViewModelModule {
 
     @Binds
     @IntoMap
-    @ScreenScope
     @MainViewModelKey(MainViewModel::class)
     fun bindMainViewModel(impl: MainViewModel): ViewModel
 

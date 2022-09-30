@@ -14,13 +14,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        appComponent().newActivityComponent().inject(this)
+        val component = getComponent { appComponent().newActivityComponent() }
+        component.inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-        Log.d(TAG,"ViewModel: $viewModel")
-        Log.d(TAG,"ViewModelFactory: $viewModelFactory")
+        Log.d(TAG, "ViewModel: $viewModel")
+        Log.d(TAG, "ViewModelFactory: $viewModelFactory")
+        Log.d(TAG, "Component: $component")
         viewModel.print()
     }
 
